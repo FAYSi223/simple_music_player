@@ -1,0 +1,261 @@
+ <!DOCTYPE html>
+<html>
+<head>
+    <title>Melli Music</title>
+    <style>
+
+ body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: white;
+            position: relative;
+        }
+
+        header {
+            background-color: #111;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        .song-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        .song {
+            background-color: #333;
+            border-radius: 8px;
+            margin: 10px;
+            padding: 10px;
+            width: 200px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .song img {
+            max-width: 100%;
+            border-radius: 6px;
+        }
+
+        .audio-controls {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #282828;
+            padding: 20px;
+            display: none;
+            border-top: 1px solid #444;
+        }
+
+        .audio-controls audio {
+            width: 100%;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            margin-top: 10px;
+        }
+
+        .active {
+            display: block !important;
+        }
+
+        .progress-bar {
+            width: 100%;
+            background-color: #535353;
+            height: 5px;
+        }
+
+        .progress {
+            width: 0;
+            height: 100%;
+            background-color: #1DB954;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        .control-buttons {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .control-buttons img {
+            width: 32px;
+            height: 32px;
+            filter: invert(1);
+            cursor: pointer;
+        }
+
+        .volume {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .volume input {
+            width: 100px;
+        }
+
+        .lyrics-button {
+            background-color: #1DB954;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .lyrics {
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            display: none;
+            border-radius: 8px;
+            margin-top: 20px;
+            line-height: 1.6;
+            overflow: auto;
+            max-height: 150px;
+        }
+    </style>
+    <script>
+        function toggleAudioControls(elementId) {
+            var controls = document.getElementById(elementId);
+            controls.classList.toggle('active');
+        }
+
+        function toggleLyrics(elementId) {
+            var lyrics = document.getElementById(elementId);
+            lyrics.classList.toggle('active');
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Melli Music</h1>
+    </header>
+    <div class="song-list">
+        <div class="song" onclick="toggleAudioControls('audio1')">
+            <img src="moonlight.jpg" alt="Album Cover">
+            <p>SAD - XXXTentacion</p>
+        </div>
+        <div class="song" onclick="toggleAudioControls('audio2')">
+            <img src="moonlight.jpg" alt="Album Cover">
+            <p>Moonlight - XXXTentacion</p>
+        </div>
+        <!-- Weitere Song-Divs hier -->
+    </div>
+    <div id="audio1" class="audio-controls">
+        <div class="progress-bar">
+            <div class="progress"></div>
+        </div>
+        <audio controls>
+            <source src="sad.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <div class="controls">
+            <div class="control-buttons">
+                <img src="play-icon.png" alt="Play">
+                <img src="pause-icon.png" alt="Pause">
+                <img src="next-icon.png" alt="Next">
+            </div>
+            <div class="volume">
+                <img src="volume-icon.png" alt="Volume">
+                <input type="range" min="0" max="100" value="50">
+            </div>
+        </div>
+        <button class="lyrics-button" onclick="toggleLyrics('lyrics1')">Show Lyrics</button>
+        <div class="lyrics" id="lyrics1">
+            <p>Lyrics for Song Title 1:</p>
+            <p>Verse 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p>Chorus: Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <!-- Weitere Songtext-Zeilen hier -->
+        </div>
+    </div>
+    <div id="audio2" class="audio-controls">
+        <div class="progress-bar">
+            <div class="progress"></div>
+        </div>
+        <audio controls>
+            <source src="moonlight.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <div class="controls">
+            <div class="control-buttons">
+                <img src="play-icon.png" alt="Play">
+                <img src="pause-icon.png" alt="Pause">
+                <img src="next-icon.png" alt="Next">
+            </div>
+            <div class="volume">
+                <img src="volume-icon.png" alt="Volume">
+                <input type="range" min="0" max="100" value="50">
+            </div>
+        </div>
+        <button class="lyrics-button" onclick="toggleLyrics('lyrics2')">Show Lyrics</button>
+        <div class="lyrics" id="lyrics2">
+                        <p>Lyrics for Moonlight - XXXTentacion:<br>
+			Yeah
+Spotlight, uh, moonlight, uh<br>
+Nigga, why you trippin'? Get your mood right, uh<br>
+Shawty look good in the moonlight<br>
+All these pussy niggas so bad mind<br>
+Spotlight, moonlight<br>
+Nigga, why you trippin'? Get your mood right<br>
+Shawty look good in the moonlight<br>
+All these pussy niggas so bad mind<br>
+Spotlight, uh, moonlight, uh<br>
+Nigga, why you trippin'? Get your mood right, uh<br>
+Shawty look good in the moonlight<br>
+All these pussy niggas so bad mind<br>
+Spotlight, moonlight<br>
+Nigga, why you trippin'? Get your mood right<br>
+Shawty look good in the moonlight<br>
+All these pussy niggas so bad mind<br>
+Feel like I'm destined<br>
+I don't need no Smith & Wesson, no<br>
+Boy, who you testin'?<br>
+Fuck a Scantron, here's your lesson, oh<br>
+Knife in intestine<br>
+Takin' shots at all your bredrin, oh<br>
+Feel like I'm damaged<br>
+Girl, I know you fuckin' planned this<br>
+All alone, call my phone, make me feel right<br>
+Girl, you know when you call, make me feel right<br>
+All alone, call my phone, make me feel right<br>
+Girl, you know when you call, make me feel right<br>
+Spotlight, uh, moonlight, uh<br>
+Nigga, why you trippin'? Get your mood right, uh<br>
+Shawty look good in the moonlight<br>
+All these pussy niggas so bad mind<br>
+Spotlight, moonlight<br>
+Nigga, why you trippin'? Get your mood right<br>
+Shawty look good in the moonlight<br>
+All these pussy niggas so bad mind<br>
+Spotlight, uh, moonlight, uh<br>
+Nigga, why you trippin'? Get your mood right, uh<br>
+Shawty look good in the moonlight<br>
+All these pussy niggas so bad mind<br>
+Spotlight, moonlight<br>
+Nigga, why you trippin'? Get your mood right<br>
+Shawty look good in the moonlight<br>
+All these pussy niggas so bad mind</p>
+            <!-- Weitere Songtext-Zeilen hier -->
+        </div>
+    </div>
+    <!-- Weitere Audio-Elemente hier -->
+</body>
+</html>
